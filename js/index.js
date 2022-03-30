@@ -292,7 +292,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n//\n//\n//\n//\n//\n//\n/* ha
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  name: 'RootHeader',\n  computed: {\n    isTesting: function isTesting() {\n      return \"staging\" === 'testing';\n    }\n  }\n});\n\n//# sourceURL=webpack:///./src/components/RootHeader.vue?./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options");
+eval("__webpack_require__.r(__webpack_exports__);\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n//\n/* harmony default export */ __webpack_exports__[\"default\"] = ({\n  name: 'RootHeader',\n  computed: {\n    isTesting: function isTesting() {\n      return \"staging\" === 'testing';\n    }\n  }\n});\n\n//# sourceURL=webpack:///./src/components/RootHeader.vue?./node_modules/cache-loader/dist/cjs.js??ref--13-0!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options");
 
 /***/ }),
 
@@ -376,7 +376,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) *
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"render\", function() { return render; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"staticRenderFns\", function() { return staticRenderFns; });\nvar render = function () {\n  var _vm = this\n  var _h = _vm.$createElement\n  var _c = _vm._self._c || _h\n  return _c(\"header\", { staticClass: \"header\" }, [\n    _c(\n      \"video\",\n      {\n        staticClass: \"header_video d-none d-lg-block\",\n        attrs: { autoplay: \"\", muted: \"\", loop: \"\", playsinline: \"\" },\n        domProps: { muted: true },\n      },\n      [\n        !_vm.isTesting\n          ? _c(\"source\", {\n              attrs: {\n                src: __webpack_require__(/*! @/assets/media/videos/header-xl.webm */ \"./src/assets/media/videos/header-xl.webm\"),\n                type: \"video/webm\",\n              },\n            })\n          : _vm._e(),\n        !_vm.isTesting\n          ? _c(\"source\", {\n              attrs: {\n                src: __webpack_require__(/*! @/assets/media/videos/header-xl.mp4 */ \"./src/assets/media/videos/header-xl.mp4\"),\n                type: \"video/mp4\",\n              },\n            })\n          : _vm._e(),\n      ]\n    ),\n    _c(\n      \"video\",\n      {\n        staticClass: \"header_video d-none d-md-block d-lg-none\",\n        attrs: { autoplay: \"\", muted: \"\", loop: \"\", playsinline: \"\" },\n        domProps: { muted: true },\n      },\n      [\n        !_vm.isTesting\n          ? _c(\"source\", {\n              attrs: {\n                src: __webpack_require__(/*! @/assets/media/videos/header-md.webm */ \"./src/assets/media/videos/header-md.webm\"),\n                type: \"video/webm\",\n              },\n            })\n          : _vm._e(),\n        !_vm.isTesting\n          ? _c(\"source\", {\n              attrs: {\n                src: __webpack_require__(/*! @/assets/media/videos/header-md.mp4 */ \"./src/assets/media/videos/header-md.mp4\"),\n                type: \"video/mp4\",\n              },\n            })\n          : _vm._e(),\n      ]\n    ),\n    _c(\n      \"video\",\n      {\n        staticClass: \"header_video d-block d-md-none\",\n        attrs: { autoplay: \"\", muted: \"\", loop: \"\", playsinline: \"\" },\n        domProps: { muted: true },\n      },\n      [\n        !_vm.isTesting\n          ? _c(\"source\", {\n              attrs: {\n                src: __webpack_require__(/*! @/assets/media/videos/header-sm.webm */ \"./src/assets/media/videos/header-sm.webm\"),\n                type: \"video/webm\",\n              },\n            })\n          : _vm._e(),\n        !_vm.isTesting\n          ? _c(\"source\", {\n              attrs: {\n                src: __webpack_require__(/*! @/assets/media/videos/header-sm.mp4 */ \"./src/assets/media/videos/header-sm.mp4\"),\n                type: \"video/mp4\",\n              },\n            })\n          : _vm._e(),\n      ]\n    ),\n    _vm._m(0),\n    _vm._m(1),\n    _vm._m(2),\n    _c(\"img\", {\n      staticClass: \"d-block d-md-none header-bar_logo-mobile\",\n      attrs: {\n        src: __webpack_require__(/*! @/assets/media/RFSIDS.png */ \"./src/assets/media/RFSIDS.png\"),\n        alt: \"Rising Up For Small Islands Developing States Logo\",\n      },\n    }),\n  ])\n}\nvar staticRenderFns = [\n  function () {\n    var _vm = this\n    var _h = _vm.$createElement\n    var _c = _vm._self._c || _h\n    return _c(\n      \"div\",\n      { staticClass: \"d-none d-md-block d-lg-block d-xl-block header-bar\" },\n      [\n        _c(\n          \"a\",\n          { attrs: { href: \"https://data.undp.org/\", target: \"_blank\" } },\n          [\n            _c(\"img\", {\n              staticClass: \"header-bar_logo\",\n              attrs: {\n                src: __webpack_require__(/*! @/assets/media/logo.png */ \"./src/assets/media/logo.png\"),\n                alt: \"UNDP Data Futures Platform Logo\",\n              },\n            }),\n          ]\n        ),\n      ]\n    )\n  },\n  function () {\n    var _vm = this\n    var _h = _vm.$createElement\n    var _c = _vm._self._c || _h\n    return _c(\"main\", { staticClass: \"header-text\", attrs: { role: \"main\" } }, [\n      _c(\"h1\", { staticClass: \"header-text_header header-text_header-big\" }, [\n        _vm._v(\"Data Visualization Platform\"),\n      ]),\n      _c(\"h2\", { staticClass: \"header-text_header header-text_header-small\" }, [\n        _vm._v(\"for the\"),\n      ]),\n      _c(\"h1\", { staticClass: \"header-text_header header-text_header-big\" }, [\n        _vm._v(\"SMALL ISLAND DEVELOPING STATES \"),\n      ]),\n      _c(\"hr\", {\n        staticClass:\n          \"d-none d-md-block d-lg-block d-xl-block header-text_divider\",\n      }),\n      _c(\n        \"p\",\n        {\n          staticClass:\n            \"d-none d-md-block d-lg-block d-xl-block header-text_description\",\n        },\n        [\n          _vm._v(\n            \"UNDP’s integrated approach supports Small Island Developing States to accelerate transformative development based on three pillars: Climate Action, Blue Economy, and Digital Transformation. \"\n          ),\n        ]\n      ),\n    ])\n  },\n  function () {\n    var _vm = this\n    var _h = _vm.$createElement\n    var _c = _vm._self._c || _h\n    return _c(\n      \"a\",\n      {\n        staticClass: \"header_button-down d-none d-md-block\",\n        attrs: { href: \"#content\" },\n      },\n      [\n        _c(\"img\", {\n          attrs: {\n            alt: \"Arrow Down Icon\",\n            src: __webpack_require__(/*! @/assets/media/icons/arrow-down.png */ \"./src/assets/media/icons/arrow-down.png\"),\n          },\n        }),\n      ]\n    )\n  },\n]\nrender._withStripped = true\n\n\n\n//# sourceURL=webpack:///./src/components/RootHeader.vue?./node_modules/cache-loader/dist/cjs.js?%7B%22cacheDirectory%22:%22node_modules/.cache/vue-loader%22,%22cacheIdentifier%22:%22c84297b6-vue-loader-template%22%7D!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"render\", function() { return render; });\n/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \"staticRenderFns\", function() { return staticRenderFns; });\nvar render = function () {\n  var _vm = this\n  var _h = _vm.$createElement\n  var _c = _vm._self._c || _h\n  return _c(\"header\", { staticClass: \"header\" }, [\n    _c(\n      \"video\",\n      {\n        staticClass: \"header_video d-none d-lg-block\",\n        attrs: {\n          poster: __webpack_require__(/*! @/assets/media/videos/video-placeholder.jpeg */ \"./src/assets/media/videos/video-placeholder.jpeg\"),\n          autoplay: \"\",\n          muted: \"\",\n          loop: \"\",\n          playsinline: \"\",\n        },\n        domProps: { muted: true },\n      },\n      [\n        !_vm.isTesting\n          ? _c(\"source\", {\n              attrs: {\n                src: __webpack_require__(/*! @/assets/media/videos/header-xl.webm */ \"./src/assets/media/videos/header-xl.webm\"),\n                type: \"video/webm\",\n              },\n            })\n          : _vm._e(),\n        !_vm.isTesting\n          ? _c(\"source\", {\n              attrs: {\n                src: __webpack_require__(/*! @/assets/media/videos/header-xl.mp4 */ \"./src/assets/media/videos/header-xl.mp4\"),\n                type: \"video/mp4\",\n              },\n            })\n          : _vm._e(),\n      ]\n    ),\n    _vm._m(0),\n    _vm._m(1),\n    _vm._m(2),\n    _c(\"img\", {\n      staticClass: \"d-block d-md-none header-bar_logo-mobile\",\n      attrs: {\n        src: __webpack_require__(/*! @/assets/media/RFSIDS.png */ \"./src/assets/media/RFSIDS.png\"),\n        alt: \"Rising Up For Small Islands Developing States Logo\",\n      },\n    }),\n  ])\n}\nvar staticRenderFns = [\n  function () {\n    var _vm = this\n    var _h = _vm.$createElement\n    var _c = _vm._self._c || _h\n    return _c(\n      \"div\",\n      { staticClass: \"d-none d-md-block d-lg-block d-xl-block header-bar\" },\n      [\n        _c(\n          \"a\",\n          { attrs: { href: \"https://data.undp.org/\", target: \"_blank\" } },\n          [\n            _c(\"img\", {\n              staticClass: \"header-bar_logo\",\n              attrs: {\n                src: __webpack_require__(/*! @/assets/media/logo.png */ \"./src/assets/media/logo.png\"),\n                alt: \"UNDP Data Futures Platform Logo\",\n              },\n            }),\n          ]\n        ),\n      ]\n    )\n  },\n  function () {\n    var _vm = this\n    var _h = _vm.$createElement\n    var _c = _vm._self._c || _h\n    return _c(\"main\", { staticClass: \"header-text\", attrs: { role: \"main\" } }, [\n      _c(\"h1\", { staticClass: \"header-text_header header-text_header-big\" }, [\n        _vm._v(\"Data Visualization Platform\"),\n      ]),\n      _c(\"h2\", { staticClass: \"header-text_header header-text_header-small\" }, [\n        _vm._v(\"for the\"),\n      ]),\n      _c(\"h1\", { staticClass: \"header-text_header header-text_header-big\" }, [\n        _vm._v(\"SMALL ISLAND DEVELOPING STATES \"),\n      ]),\n      _c(\"hr\", {\n        staticClass:\n          \"d-none d-md-block d-lg-block d-xl-block header-text_divider\",\n      }),\n      _c(\n        \"p\",\n        {\n          staticClass:\n            \"d-none d-md-block d-lg-block d-xl-block header-text_description\",\n        },\n        [\n          _vm._v(\n            \"UNDP’s integrated approach supports Small Island Developing States to accelerate transformative development based on three pillars: Climate Action, Blue Economy, and Digital Transformation. \"\n          ),\n        ]\n      ),\n    ])\n  },\n  function () {\n    var _vm = this\n    var _h = _vm.$createElement\n    var _c = _vm._self._c || _h\n    return _c(\n      \"a\",\n      {\n        staticClass: \"header_button-down d-none d-md-block\",\n        attrs: { href: \"#content\" },\n      },\n      [\n        _c(\"img\", {\n          attrs: {\n            alt: \"Arrow Down Icon\",\n            src: __webpack_require__(/*! @/assets/media/icons/arrow-down.png */ \"./src/assets/media/icons/arrow-down.png\"),\n          },\n        }),\n      ]\n    )\n  },\n]\nrender._withStripped = true\n\n\n\n//# sourceURL=webpack:///./src/components/RootHeader.vue?./node_modules/cache-loader/dist/cjs.js?%7B%22cacheDirectory%22:%22node_modules/.cache/vue-loader%22,%22cacheIdentifier%22:%22c84297b6-vue-loader-template%22%7D!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--1-0!./node_modules/vue-loader/lib??vue-loader-options");
 
 /***/ }),
 
@@ -869,50 +869,6 @@ eval("module.exports = \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARwAAACFC
 
 /***/ }),
 
-/***/ "./src/assets/media/videos/header-md.mp4":
-/*!***********************************************!*\
-  !*** ./src/assets/media/videos/header-md.mp4 ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__.p + \"media/header-md.5eb4d9c8.mp4\";\n\n//# sourceURL=webpack:///./src/assets/media/videos/header-md.mp4?");
-
-/***/ }),
-
-/***/ "./src/assets/media/videos/header-md.webm":
-/*!************************************************!*\
-  !*** ./src/assets/media/videos/header-md.webm ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__.p + \"media/header-md.c5a79879.webm\";\n\n//# sourceURL=webpack:///./src/assets/media/videos/header-md.webm?");
-
-/***/ }),
-
-/***/ "./src/assets/media/videos/header-sm.mp4":
-/*!***********************************************!*\
-  !*** ./src/assets/media/videos/header-sm.mp4 ***!
-  \***********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__.p + \"media/header-sm.d22f0043.mp4\";\n\n//# sourceURL=webpack:///./src/assets/media/videos/header-sm.mp4?");
-
-/***/ }),
-
-/***/ "./src/assets/media/videos/header-sm.webm":
-/*!************************************************!*\
-  !*** ./src/assets/media/videos/header-sm.webm ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__.p + \"media/header-sm.c21aa555.webm\";\n\n//# sourceURL=webpack:///./src/assets/media/videos/header-sm.webm?");
-
-/***/ }),
-
 /***/ "./src/assets/media/videos/header-xl.mp4":
 /*!***********************************************!*\
   !*** ./src/assets/media/videos/header-xl.mp4 ***!
@@ -932,6 +888,17 @@ eval("module.exports = __webpack_require__.p + \"media/header-xl.5f911120.mp4\";
 /***/ (function(module, exports, __webpack_require__) {
 
 eval("module.exports = __webpack_require__.p + \"media/header-xl.2a517de8.webm\";\n\n//# sourceURL=webpack:///./src/assets/media/videos/header-xl.webm?");
+
+/***/ }),
+
+/***/ "./src/assets/media/videos/video-placeholder.jpeg":
+/*!********************************************************!*\
+  !*** ./src/assets/media/videos/video-placeholder.jpeg ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"img/video-placeholder.cfe0ad85.jpeg\";\n\n//# sourceURL=webpack:///./src/assets/media/videos/video-placeholder.jpeg?");
 
 /***/ }),
 
