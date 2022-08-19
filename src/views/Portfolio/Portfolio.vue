@@ -3,7 +3,8 @@
     <div class="print-page-wrap">
       <printout-header>
         <template slot="text">
-          {{$t('portfolio.header')}}
+          <b>UNDP Portfolio <br/>
+            in Small Island Developing States</b>
         </template>
       </printout-header>
       <portfolio-printout-chips
@@ -12,7 +13,7 @@
         :year="yearText"
         :goalType="goalsType"
         :goal="goal"
-        :fundingCategory="fundingCategoryText"
+        :fundingCategory="fundingCategory"
         :fundingSource="fundingSource"
       />
       <p class="d-none mt-6 d-print-block">
@@ -90,8 +91,8 @@
           >
             <template v-slot:header>
               <v-row class="map-header d-none d-lg-flex">
-                <v-col class="offset-lg-1 offset-lg-2 offset-md-1 offset-sm-2 offset-2 pb-0" cols="8" sm="8" md='10' lg='8' xl="10">
-                  <h2 class="page-header mt-md-2 mb-0">{{$t('portfolio.header')}}</h2>
+                <v-col class="offset-xl-1 offset-lg-2 offset-md-1 offset-sm-2 offset-2" cols="8" sm="8" md='10' lg='8' xl="10">
+                  <h2 class="page-header mt-md-2 mb-2">{{$t('portfolio.header')}}</h2>
                 </v-col>
                 <v-col class="" cols="2" sm="1" md='1' lg='2' xl="1">
                   <div class="mt-2 float-md-right mb-2">
@@ -125,9 +126,9 @@
                   class="tabs portfolio-slider"
                   v-model="activePage"
                 >
-                  <info-hover-tooltip attach=".portfolio-slider" :key="page.value" v-for="page in pages" :bottom="true" :noMaxHeight="true" contentClass="tabs-tooltip" :contentName="page.contentName">
+                  <info-hover-tooltip attach=".portfolio-slider" :key="page.value" v-for="page in pages" :bottom="true" contentClass="tabs-tooltip" :contentName="page.contentName">
                     <template v-slot:button>
-                    <v-tab class="portfolio-tab" :class="{'portfolio-tab-long' : page.value === 'sdgs'}"   @change="transitionTo(page.value)" >
+                    <v-tab   @change="transitionTo(page.value)" >
                         {{$t(`root.goals.${page.value}`)}}
                     </v-tab></template>
                   </info-hover-tooltip>
@@ -151,8 +152,11 @@
                 <info-hover-tooltip :bottom="true" contentName="portfolioTooltip-solutions">
                   <template slot="content">
                     <v-card class="pie-tooltip-content">
+                      <v-card-title>
+                        Finance sources
+                      </v-card-title>
                       <v-card-text>
-                        <p>{{$t('portfolio.fundingInfo')}}</p>
+                        <p>Pie chart can be used to identify organisations that invest in similar projects or are focused on the same regions</p>
                       </v-card-text>
                     </v-card>
                   </template>
@@ -175,7 +179,7 @@
           <v-row dense justify="center">
             <v-col cols='5' md="5" lg="12">
               <div class="select">
-              <label class="input-label">{{$t('portfolio.year')}}</label>
+              <label class="input-label">{{$t('root.forms.years')}}</label>
               <v-select
                 rounded
                 dense
@@ -184,14 +188,7 @@
                 @change="setYear"
                 :items="years"
                 outlined
-              >
-                <template slot="selection" slot-scope="data">
-                  <span class="select-text-element">{{data.item.text ? $t('portfolio.' + data.item.text) : data.item.value}}</span>
-                </template>
-                <template  slot="item" slot-scope="data">
-                  {{data.item.text ? $t('portfolio.' + data.item.text) : data.item.value}}
-                </template>
-              </v-select>
+              ></v-select>
               </div>
             </v-col>
             <v-col cols='5'  md="5" lg="12">
@@ -206,14 +203,7 @@
                   @change="setCategory"
                   :items="fundingCategoriesTypes"
                   outlined
-                >
-                  <template slot="selection" slot-scope="data">
-                    <span class="select-text-element">{{$t('portfolio.fundingTypes.' + data.item.text)}}</span>
-                  </template>
-                  <template  slot="item" slot-scope="data">
-                    {{$t('portfolio.fundingTypes.' + data.item.text)}}
-                  </template>
-                </v-select>
+                ></v-select>
               </div>
             </v-col>
           </v-row>
@@ -231,14 +221,7 @@
                   @change="updateRegion"
                   :items="regionsToSelect"
                   outlined
-                >
-                  <template slot="selection" slot-scope="data">
-                    <span class="select-text-element">{{data.item.id ? $t('countryNames.'+data.item.id) : $t('regions.'+data.item.iso)}}</span>
-                  </template>
-                  <template  slot="item" slot-scope="data">
-                   {{data.item.id ? $t('countryNames.'+data.item.id) : $t('regions.'+data.item.iso)}}
-                  </template>
-                </v-select>
+                ></v-select>
               </div>
             </v-col>
             <v-col cols='5'  md="5" lg="12">
@@ -254,14 +237,7 @@
                   item-text="name"
                   item-value="name"
                   outlined
-                  >
-                  <template slot="selection" slot-scope="data">
-                    <span class="select-text-element">{{data.item.text ? $t('portfolio.' + data.item.text) : data.item.name}}</span>
-                  </template>
-                  <template  slot="item" slot-scope="data">
-                    {{data.item.text ? $t('portfolio.' + data.item.text) : data.item.name}}
-                  </template>
-                  </v-autocomplete>
+                  ></v-autocomplete>
               </div>
             </v-col>
           </v-row>
@@ -274,7 +250,7 @@
 
         <v-col class="chart-caption-goals" cols="12">
           <h3>
-            {{$t(`root.goals.${goalsType}`)}}
+              Projects and finance by {{$t(`root.goals.${goalsType}`)}}
           </h3>
         </v-col>
         <v-col class="mt-0 pt-0" cols="12" v-html="$t(`portfolio.export.${goalsType}`)">
@@ -371,78 +347,57 @@ export default {
       goals,
       pages:goalTypes,
       activePage:goalTypes.findIndex((goal) => goal.value === this.goalsType),
-      fundingCategoriesTypes:[{
-        value:'All',
-        text: "all",
-      },
-      {
-        value:"European Union",
-        text: "eu",
-      },
-      {
-        value:"Donor Countries",
-        text: "donors",
-      },
-      {
-        value:"Programme Countries",
-        text: "programmeCountries",
-      },
-      {
-        value:"UN Agencies",
-        text: "unAcgencies",
-      },
-      {
-        value:"UN Pooled Funds",
-        text: "unFunds",
-      },
-      {
-        value:"Vertical Funds",
-        text: "verticalFunds",
-      },
-      {
-        value:"Other",
-        text: "other"
-      }],
+      fundingCategoriesTypes:['All', "European Union", "Donor Countries", "Programme Countries", "UN Agencies", "UN Pooled Funds", "Vertical Funds", "Other"],
       years:[
         {
-          text:'yearsAll',
+          text:this.$t('portfolio.yearsAll'),
           value: 'all',
         },{
+          text:'2021',
           value: '2021',
         },{
+          text:'2020',
           value: '2020',
         },{
+          text:'2019',
           value: '2019',
         },{
+          text:'2018',
           value: '2018',
         },{
+          text:'2017',
           value: '2017',
         },{
+          text:'2016',
           value: '2016',
         },{
+          text:'2015',
           value: '2015',
         },{
+          text:'2014',
           value: '2014',
         },{
+          text:'2013',
           value: '2013',
         },{
+          text:'2012',
           value: '2012',
         }
       ],
       regionsToSelect: [
-        {iso: "caribbean", name:this.$t('regions.caribbean')},
-        {iso: "ais", name:this.$t('regions.ais')},
-        {iso: "pacific", name:this.$t('regions.pacific')},
-        {iso: "allSids", name:this.$t('regions.allSids')},
+        {iso: "Caribbean", name:'Caribbean'},
+        {iso: "AIS", name:'AIS'},
+        {iso: "Pacific", name:'Pacific'},
+        {iso: "All", name:'All SIDS'},
       ].concat(sidsList.filter(country => !country.average)),
       sdgToSamoa: { 1: [1], 2: [6], 3: [11], 4: [12, 13], 5: [13], 6: [7], 7: [3], 8: [1], 9: [1, 8], 10: [12, 13], 11: [1, 4, 8, 10], 12: [9, 10], 13: [2, 4], 14: [5, 10, 14], 15: [10, 15], 16: [1, 13], 17: [16] },
       goal:'all',
-      regions: ["caribbean", "ais", "pacific"],
+      regions: ["Caribbean", "AIS", "Pacific"],
       regionColors: d3.scaleOrdinal()
-        .domain(["caribbean", "ais", "pacific"])
+        .domain(["Caribbean", "AIS", "Pacific"])
         .range(["#008080", "#97002B", "#F0A500"]),
       sourcesColor: d3.scaleOrdinal()
-        .domain(["eu", "donors", "programmeCountries", "unAcgencies", "unFunds", "verticalFunds", "other"])
+        .domain(["Vertical Funds", "Donor Countries", "Programme Countries", "UN Pooled Funds", "UN Agencies", "European Union", "Other"])
         .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00", "#ac4f5f"])
     }
   },
@@ -458,7 +413,7 @@ export default {
         return {
           category: region,
           value: this.portfolioData.reduce((budget, project) => {
-              if(project.region.toLowerCase() === region &&
+              if(project.region === region &&
                 (this.fundingCategory === 'All' ||
                 project.donors.some((donor) =>this.checkProjectsCategory(project, donor))
                 )
@@ -472,18 +427,14 @@ export default {
       return funding
     },
     yearText() {
-      let year = this.years.find(y => y.value === this.year);
-      return year.text ? this.$t('portfolio.' + year.text) : year.value;
-    },
-    fundingCategoryText() {
-      return this.fundingCategoriesTypes.find(c => c.value === this.fundingCategory).text
+      return this.years.find(y => y.value === this.year).text;
     },
     regionFundingMobile() {
        let funding = this.regions.map(region => {
         return {
           category: region,
           value: this.portfolioData.reduce((budget, project) => {
-              if(project.region.toLowerCase() === region &&
+              if(project.region === region &&
                 (this.fundingCategory === 'All' ||
                 project.donors.some((donor) =>this.checkProjectsCategory(project, donor))
               ) && this.checkGoalValidity(project)
@@ -497,23 +448,23 @@ export default {
       return funding
     },
     sourcesFunding() {
-      let labels = this.fundingCategoriesTypes.filter(c => c.value !== 'All').map(c => {
+      let labels = this.sourcesColor.domain().map(label => {
         return {
-          category: c.text,
+          category: label,
           value: this.portfolioData.reduce((budget, project) => {
             let financing = project.donors.reduce((finance, donor, index, donors )=> {
               if(this.fundingCategory === 'All' || donors.some((donor) => this.checkProjectsCategory(project, donor))) {
-                if (c.value == "Programme Countries") {
+                if (label == "Programme Countries") {
                   if (donor.category == "Government" && project.country == donor.subCategory) {
                     return finance + (project.budget / donors.length)
                   }
                 }
-                else if (c.value == "Donor Countries") {
+                else if (label == "Donor Countries") {
                   if (donor.category == "Government" && donor.subCategory != project.country) {
                     return finance + (project.budget / donors.length)
                   }
                 }
-                else if (donor.category == c.value) {
+                else if (donor.category == label) {
                   return finance + (project.budget / donors.length)
                 }
               }
@@ -526,23 +477,23 @@ export default {
       return labels
     },
     sourcesFundingMobile() {
-      let labels = this.fundingCategoriesTypes.filter(c => c.value !== 'All').map(c => {
+      let labels = this.sourcesColor.domain().map(label => {
         return {
-          category: c.text,
+          category: label,
           value: this.portfolioData.reduce((budget, project) => {
             let financing = project.donors.reduce((finance, donor, index, donors )=> {
               if((this.fundingCategory === 'All' || donors.some((donor) => this.checkProjectsCategory(project, donor))) && this.checkGoalValidity(project)) {
-                if (c.value == "Programme Countries") {
+                if (label == "Programme Countries") {
                   if (donor.category == "Government" && project.country == donor.subCategory) {
                     return finance + (project.budget / donors.length)
                   }
                 }
-                else if (c.value == "Donor Countries") {
+                else if (label == "Donor Countries") {
                   if (donor.category == "Government" && donor.subCategory != project.country) {
                     return finance + (project.budget / donors.length)
                   }
                 }
-                else if (donor.category == c.value) {
+                else if (donor.category == label) {
                   return finance + (project.budget / donors.length)
                 }
               }
@@ -578,15 +529,17 @@ export default {
       if(type === 'region') {
         let regionToSet
         if(this.region === value) {
-          regionToSet = 'allSids'
+          regionToSet = 'All'
         } else {
           regionToSet = value
         }
         this.$router.push({query: Object.assign({}, this.$route.query, {region : encodeURIComponent(regionToSet)})})
       } else {
-        let categoryToSet = this.fundingCategoriesTypes.find(c => c.text === value).value;
-        if(this.fundingCategory === categoryToSet) {
+        let categoryToSet
+        if(this.fundingCategory === value) {
           categoryToSet = 'All'
+        } else {
+          categoryToSet = value
         }
         this.$router.push({query: Object.assign({}, this.$route.query, {
           fundingCategory : encodeURIComponent(categoryToSet)})})
@@ -594,7 +547,7 @@ export default {
     },
     callDataUpdate(route) {
       store.dispatch('sids/generatePortfolioData', {
-        region: route.query.region || 'allSids',
+        region: route.query.region || 'All',
         year: route.query.year || 'all',
         category: decodeURIComponent(route.query.fundingCategory || 'All') ,
         source: decodeURIComponent(route.query.fundingSource || 'All Funding Sources'),
@@ -745,14 +698,5 @@ export default {
     width: 860px !important;
     left: 50% !important;
     transform: translateX(-50%);
-  }
-  .portfolio-tab {
-    max-width: 217px !important;
-    width: 217px !important;
-  }
-
-  .portfolio-tab-long {
-    max-width: 340px !important;
-    width: 340px !important;
   }
 </style>
