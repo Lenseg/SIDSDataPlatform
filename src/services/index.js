@@ -85,7 +85,7 @@ async function loadResourcesData () {
 }
 
 async function loadTextContent () {
-  const resp = await axios.get(`${API_URl}/cms/en.json`)
+  const resp = await axios.get(`${API_URl}/cms/app/en.json`)
   return resp.data
 }
 
@@ -141,6 +141,6 @@ async function loadMLPredictorSize () {
 }
 
 async function loadLang(lang) {
-  let resp = await axios.get(`${API_URl}/cms/${lang}.json`);
+  let resp = await axios.get(`${API_URl}/cms/app/${lang}.json`);
   return resp.data
 }
