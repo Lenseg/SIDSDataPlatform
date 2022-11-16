@@ -4,14 +4,11 @@
       <v-card flat class="overflow background-grey">
           <v-list dense class="indicators-list background-grey"
           >
-            <v-list-item v-for="(indicator) in financeData" :key="indicator.axis">
-                    <info-hover-tooltip :large="false">
-
-                      <template slot="button">
-                        <v-list-item-title class="one-line_header">
-                          {{$t(`finance.${indicator.axis.replaceAll('.','-')}`)}}
-                        </v-list-item-title>
-                      </template>
+            <v-list-item v-for="(indicator) in financeData"
+              :ripple="false"
+              :to="`/development-indicators/${indicator.axis}`"
+              :key="indicator.axis">
+                    <info-hover-tooltip :large="true">
                       <template slot="content">
                         <v-card flat>
                           <v-card-text class="active-indicator-info">
