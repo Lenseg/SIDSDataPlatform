@@ -32,7 +32,7 @@ export function updateVizEngine(indicatorCode) {
   }
 
   if (this.indicatorCode == "region") {
-    this.indicatorCode = "hdr-137506";///temp so has something to attach to data
+    this.indicatorCode = "hdr-hdi";///temp so has something to attach to data
   }
   if (Object.keys(indexCodes).includes(this.indicatorCode)) {
     this.vizMode = "index";
@@ -498,8 +498,8 @@ export function updateCountrySvgColors(quantize) {
             if (this.indicatorCode == "Region") {
               return (
                 regionColors(
-                  rootThis.profileData[this.id].Region,
-                  rootThis.profileData[this.id]["Member State (Y/N)"]
+                  rootThis.profileData[this.id].region,
+                  rootThis.profileData[this.id].unMeber
                 ) + " shadow countrySvg"
               );
             } else {
@@ -513,7 +513,7 @@ export function updateCountrySvgColors(quantize) {
               rootThis.indicatorCode == "Region"
             ) {
               return (
-                regionColors(rootThis.profileData[this.id].Region, "Y") +" shadow countrySvg"
+                regionColors(rootThis.profileData[this.id].region, "Y") +" shadow countrySvg"
               );
             } else {
               return quantize(value) + " shadow countrySvg";
@@ -533,7 +533,7 @@ export function updateCountrySvgColors(quantize) {
 
           if (rootThis.indicatorCode == "Region") {
             return (
-              regionColors(rootThis.profileData[this.id].Region, "Y") +
+              regionColors(rootThis.profileData[this.id].region, "Y") +
               " shadow countrySvg"
             );
           } else {
@@ -553,7 +553,7 @@ export function updateCountrySvgColors(quantize) {
       .attr("class", function () {
         try {
           return (
-            regionColors(rootThis.profileData[this.id].Region, "Y") +
+            regionColors(rootThis.profileData[this.id].region, "Y") +
             " shadow countrySvg"
           );
         } catch(e) {
@@ -963,16 +963,12 @@ export function updateBarAxis() {
     this.indiSelections["viz"] == "series"
   ) {
     x.range([0, 0]);
-    // setTimeout(function () {
       barAxis.attr("visibility", "hidden");
-    // }, 1100);
   } else if (this.indiSelections["viz"] == "bars"||this.indiSelections["viz"] == "Multi-indicator") {
     barAxis.attr("visibility", "visible");
   }
 
   barAxis
-    // .transition()
-    // .duration(1200)
     .attr("transform", `translate(${margin.left}, 25)`)
     .call(xAxis);
 }
