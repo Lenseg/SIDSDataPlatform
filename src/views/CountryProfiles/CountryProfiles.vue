@@ -80,9 +80,9 @@
             />
           </v-col>
         </v-row>
-        <v-row>
+        <v-row class="mt-8" v-if="noData">
           <v-col offset="2" cols="8">
-            <p class="text-center grey--text">Insufficient data available for visualization.</p>
+            <p class="text-center grey--text">{{$t('countryProfile.noCountryData')}}</p>
           </v-col>
         </v-row>
         <v-row class="d-none d-md-flex d-print-flex" v-if="!noData && activeCountryProfile.CountryText && activeCountryProfile.CountryText.developmentContext" justify="center" dense>
@@ -262,7 +262,9 @@
               :values="graphValueData[pillar.name]"/>
           </v-col>
           <v-col class="charts-description mt-0 mb-0" cols="12">
-            <p class="mt-0 mb-0 text-center desc-spiders">{{$t('countryProfile.infoBox.radarAnnotation')}}</p>
+            <p class="mt-0 mb-0 text-center desc-spiders">
+              {{radarAnnotation}}
+            </p>
           </v-col>
         </v-row>
       </div>
@@ -405,6 +407,7 @@ export default {
             spin: 0,
             roundStrokes: false,
             color: d3.scaleOrdinal().range(["#0BC6FF", "#EDC951", "#CC333F", "#00A0B0", "#FFFFFF"]),
+            legend: { title: 'Legend', translateX: 0, translateY: 0 },
             textColor: "#0BC6FF"
           },
           Digital: {
@@ -448,6 +451,9 @@ export default {
       profiles: state => state.profiles.profiles,
       indicatorsMetadata: state => state.profiles.indicatorsMetadata
     }),
+    radarAnnotation() {
+      return this.$t('countryProfile.infoBox.radarAnnotation.'+this.rankType)
+    },
     noData() {
       let dataPoints = Object.keys(this.graphValueData).reduce((sum, pillarCode) => {
         let pillarSum = this.graphValueData[pillarCode][0].axes.reduce((pillarSum, indi) => {
@@ -480,7 +486,6 @@ export default {
       if(this.rankType !== 'region') {
         return this.maxValues[this.rankType]
       }
-      console.log(this.activeCountryProfile.Profile[0].value)
       return this.maxValues[this.activeCountryProfile.Profile[0].value.toLowerCase()]
     },
     graphValueData() {
