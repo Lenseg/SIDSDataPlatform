@@ -454,7 +454,6 @@ export default {
           x = (bounds[0][0] + bounds[1][0]) / 2,
           y = (bounds[0][1] + bounds[1][1]) / 2,
           scale = Math.max(1, Math.min(35, 0.9 / Math.max(dx / (this.width-250), dy / (this.height-250))));
-          console.log(scale)
           let translate = [this.width / 2 - scale * x, this.height / 2 - scale * y];
         this.map.transition()
           .duration(1350)
@@ -469,6 +468,17 @@ export default {
         .attr("dy", center[1])
         .attr("font-size", 30 / scale + 'px')
 
+    },
+    updateScreenSize() {
+      this.map.selectAll("*").remove();
+      this.initMap();
+      if(this.region !== 'allSids') {
+        if(['ais', 'caribbean', 'pacific'].includes(this.region)) {
+          this.selectRegion(this.region)
+        } else {
+          this.selectCountry(this.region)
+        }
+      }
     },
     selectRegion(name) {
       let transforms = this.regionTransforms[name];
@@ -519,7 +529,13 @@ export default {
         this.selectCountry(this.region)
       }
     }
-  }
+  },
+  created() {
+    window.addEventListener("resize", this.updateScreenSize);
+  },
+  destroyed() {
+    window.removeEventListener("resize", this.updateScreenSize);
+  },
 }
 </script>
 
