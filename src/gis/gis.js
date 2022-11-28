@@ -138,7 +138,6 @@ export default class Map {
     let map = !comparison ? this.map : this.map2;
     //
     for (let idString of Object.keys(this.options.sources)) {
-      console.log(idString)
       if(!map.getSource(idString))
         map.addSource(idString, this.options.sources[idString]);
     }
@@ -398,13 +397,16 @@ export default class Map {
     let cls = !recolorComparison
       ? this.options.currentLayerState
       : this.options.comparisonLayerState;
+    console.log(recolorComparison, cls)
     if (!map.getLayer(cls.hexSize)) {
       return;
     }
     let self = this;
+    console.log('set callback', cls.hexSize, cls.dataLayer)
     let callback = function () {
       let isloaded = map.isSourceLoaded(cls.hexSize+cls.dataLayer)
       if(isloaded) {
+        console.log(cls.hexSize, recolorComparison, 'callback remove')
         self.renderFeatures.apply(self,[map, cls, recolorComparison])
         map.off('sourcedata', callback);
       }
@@ -701,11 +703,14 @@ export default class Map {
     map2Instance.resize();
   }
   removeComparison() {
+    let cls = this.options.comparisonLayerState;
+    this.removeLayer(cls.hexSize, true)
+    this.removeLayer(cls.hexSize+'-3d', true)
+    this._removeDataVectorSource(true, cls.dataLayer, cls.hexSize)
     this.mapCompare.remove();
     document.getElementById("map2").classList.add("d-none");
   }
   renderFeatures(map, cls, comparison) {
-    console.log('render')
     var features = map.queryRenderedFeatures({
       layers: [cls.hexSize],
     });
@@ -786,35 +791,21 @@ export default class Map {
           colorRamp[4],
         ],
       ]);
-
-      if (isNaN(breaks[3]) || breaks[1] == 0) {
-        map.setPaintProperty(
-          cls.hexSize,
-          "fill-opacity",
-          0.0
-          //this.options.opacity
-        );
-        map.setFilter(cls.hexSize, null);
-        this.addNoDataLegend()
-      } else {
-        map.setFilter(cls.hexSize, [">=", 'mean', 0]);
-        console.log('legupd')
-        this.emit('layerUpdate', {
-          activeLayer: !comparison ? this.activeLayer : this.secondLayer,
-          colorRamp,
-          breaks,
-          selectedData,
-          precision: this.options.precision
-        });
-        let self = this;
-        map.setPaintProperty(
-          cls.hexSize,
-          "fill-opacity",
-          self.options.bivariateMode ? 0 : self.options.opacity // 0.8
-        );
-      }
+      map.setFilter(cls.hexSize, [">=", 'mean', 0]);
+      this.emit('layerUpdate', {
+        activeLayer: !comparison ? this.activeLayer : this.secondLayer,
+        colorRamp,
+        breaks,
+        selectedData,
+        precision: this.options.precision
+      });
+      map.setPaintProperty(
+        cls.hexSize,
+        "fill-opacity",
+        self.options.bivariateMode ? 0 : self.options.opacity // 0.8
+      );
     } else {
-      self.addNoDataLegend();
+      self.addNoDataLegend(!comparison ? this.activeLayer : this.secondLayer);
       this.emit('loadingEnd')
     }
     map.once('idle', () => {
