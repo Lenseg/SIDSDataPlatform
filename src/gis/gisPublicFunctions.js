@@ -595,9 +595,6 @@ export function createBivariate(
 
 export function toggleMapboxGLCompare() {
   //check for other mode eg. bivariate mode being active
-  if (this.options.bivariateModeEnabled) {
-    return;
-  }
   if (!this.options.compareModeEnabled) {
     this.clearHexHighlight();
     this.createComparison(this.containerId, this.map, this.map2);

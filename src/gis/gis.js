@@ -689,6 +689,9 @@ export default class Map {
     }
   }
   createComparison(containerId, map1Instance, map2Instance) {
+    map2Instance.setPitch(map1Instance.getPitch());
+    map2Instance.setCenter(map1Instance.getCenter());
+    map2Instance.setZoom(map1Instance.getZoom());
     document.getElementById("map2").classList.remove("d-none"); //enabling show the comparison map
     console.log(MapboxCompare)
     this.mapCompare = new mapboxgl.Compare(
@@ -696,9 +699,6 @@ export default class Map {
       map2Instance,
       containerId,
     );
-    map2Instance.setPitch(map1Instance.getPitch());
-    map2Instance.setCenter(map1Instance.getCenter());
-    map2Instance.setZoom(map1Instance.getZoom());
 
     map2Instance.resize();
   }
