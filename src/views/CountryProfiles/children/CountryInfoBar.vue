@@ -70,7 +70,7 @@
               </v-list-item>
             </template>
           </info-hover-tooltip>
-          <v-list-item v-if="checkIndicator('key-7')">
+          <v-list-item v-if="checkIndicator('key-language')">
             <v-list-item-content class="small-padding">
               <v-list-item-title
                 class="one-line_header"
@@ -109,7 +109,7 @@
               </v-list-item>
             </template>
           </info-hover-tooltip>
-          <v-list-item v-if="checkIndicator('key-10')">
+          <v-list-item v-if="checkIndicator('key-incomeClass')">
             <v-list-item-content class="small-padding">
               <v-list-item-title
                 class="one-line_header"
@@ -121,20 +121,20 @@
               }}</v-list-item-subtitle>
             </v-list-item-content>
           </v-list-item>
-          <info-hover-tooltip v-if="checkIndicator('key-hdr-137506')" :large="false">
+          <info-hover-tooltip v-if="checkIndicator('key-hdr-hdi')" :large="false">
             <template slot="content">
               <v-card flat>
                 <v-card-text class="active-indicator-info">
-                  {{indicatorsMetadata['key-hdr-137506'].longDefinition}}
+                  {{indicatorsMetadata['key-hdr-hdi'].longDefinition}}
                   <v-divider class="mb-1 mt-1"></v-divider>
                   <b>{{$t('portfolio.year')}}:</b>
-                    <template v-if="getIndicator('key-hdr-137506').year && getIndicator('key-hdr-137506').year!=='No Year'">
-                      ({{getIndicator('key-hdr-137506').year}})
+                    <template v-if="getIndicator('key-hdr-hdi').year && getIndicator('key-hdr-hdi').year!=='No Year'">
+                      ({{getIndicator('key-hdr-hdi').year}})
                     </template> <template v-else>
                       {{$t('root.noData')}}
                     </template> <br/>
-                  <b>{{$t('root.source')}}:</b> {{indicatorsMetadata['key-hdr-137506'].source}} <br/>
-                  <a v-if="indicatorsMetadata['key-hdr-137506'].sourceLink !== 'No Data'" :href="indicatorsMetadata['key-hdr-137506'].sourceLink" target="_blank">Link</a>
+                  <b>{{$t('root.source')}}:</b> {{indicatorsMetadata['key-hdr-hdi'].source}} <br/>
+                  <a v-if="indicatorsMetadata['key-hdr-hdi'].sourceLink !== 'No Data'" :href="indicatorsMetadata['key-hdr-hdi'].sourceLink" target="_blank">Link</a>
                 </v-card-text>
               </v-card>
             </template>
@@ -143,7 +143,7 @@
                 <v-list-item-content class="small-padding">
                   <v-list-item-title class="one-line_header" v-text="$t('countryProfile.infoBox.hdi')"></v-list-item-title>
                   <v-list-item-subtitle
-                    class="one-line_header">{{computeHDI(getIndicator("key-hdr-137506").value)}}
+                    class="one-line_header">{{computeHDI(getIndicator("key-hdr-hdi").value)}}
                   </v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
@@ -177,7 +177,7 @@
               </v-list-item>
             </template>
           </info-hover-tooltip>
-          <v-list-item v-if="checkIndicator('key-13')">
+          <v-list-item v-if="checkIndicator('key-undpPage')">
             <v-list-item-content class="small-padding">
               <v-list-item-title class="one-line_header">
                 <a :href="getIndicator('key-undpPage').value" target="_blank">
