@@ -312,12 +312,7 @@ export default class Map {
     );
   }
 
-  clearOnClickQuery() {
-    let maps = [this.map]
-    if(this.options.compareModeEnabled) {
-      maps.push(this.map2)
-    }
-    maps.map(map => {
+  clearOnClickQuery(map) {
       if (this.getLayer("iso", map)) {
         this.removeLayer("iso", map);
         this.removeSource("iso", map);
@@ -337,7 +332,6 @@ export default class Map {
           }
         }
       }
-    })
   }
   getLayer(layerName, comparison = false) {
     let map = comparison ? this.map2 : this.map
@@ -367,6 +361,14 @@ export default class Map {
     }
     if (this.map.getLayer("highlight")) {
       this.map.removeLayer("highlight");
+      this.clearOnClickQuery();
+    }
+    if (this.map2.getLayer("clickedone")) {
+      this.map2.removeLayer("clickedone");
+      this.clearOnClickQuery();
+    }
+    if (this.map2.getLayer("highlight")) {
+      this.map2.removeLayer("highlight");
       this.clearOnClickQuery();
     }
     this.emit('selectionPolyUpdate',
@@ -423,24 +425,11 @@ export default class Map {
           mapClassInstance.recolorBivarBasedOnWhatsOnPage()
         }
       });
-      //
-      // //add listener for the comparison map i.e map2
       this.map.on(eventType, () => {
         if (!mapClassInstance.options.bivariateMode) {
           mapClassInstance.recolorBasedOnWhatsOnPage(true);
         }
       });
-      //
-      //   if (!globals.bivariateMode) {
-      //     let recolorComparison = true;
-      //     mapClassInstance.recolorBasedOnWhatsOnPage(recolorComparison);
-      //
-      //     mapClassInstance.updateOverlayLegend("main");
-      //     mapClassInstance.updateOverlayLegend("comparison");
-      //   } else {
-      //     console.log("bivariateMode enabled - skipping recolor");
-      //   }
-      // });
     }
   }
   addNoDataLegend(activeLayer) {
