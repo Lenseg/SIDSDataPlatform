@@ -1,5 +1,16 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["gis~portfolio"],{
 
+/***/ "./src/assets/media/goals-icons/samoa/0.png":
+/*!**************************************************!*\
+  !*** ./src/assets/media/goals-icons/samoa/0.png ***!
+  \**************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"img/0.4f97019f.png\";\n\n//# sourceURL=webpack:///./src/assets/media/goals-icons/samoa/0.png?");
+
+/***/ }),
+
 /***/ "./src/assets/media/goals-icons/samoa/1.png":
 /*!**************************************************!*\
   !*** ./src/assets/media/goals-icons/samoa/1.png ***!
@@ -173,6 +184,17 @@ eval("module.exports = \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB3B
 /***/ (function(module, exports) {
 
 eval("module.exports = \"data:image/png;base64,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\"\n\n//# sourceURL=webpack:///./src/assets/media/goals-icons/samoa/9.png?");
+
+/***/ }),
+
+/***/ "./src/assets/media/goals-icons/sdgs/0.png":
+/*!*************************************************!*\
+  !*** ./src/assets/media/goals-icons/sdgs/0.png ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"img/0.f7e57137.png\";\n\n//# sourceURL=webpack:///./src/assets/media/goals-icons/sdgs/0.png?");
 
 /***/ }),
 
