@@ -7,7 +7,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__.p + \"img/0.4f97019f.png\";\n\n//# sourceURL=webpack:///./src/assets/media/goals-icons/samoa/0.png?");
+eval("module.exports = __webpack_require__.p + \"img/0.243d5a9c.png\";\n\n//# sourceURL=webpack:///./src/assets/media/goals-icons/samoa/0.png?");
 
 /***/ }),
 
@@ -194,7 +194,7 @@ eval("module.exports = \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAHgAAAB2C
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("module.exports = __webpack_require__.p + \"img/0.f7e57137.png\";\n\n//# sourceURL=webpack:///./src/assets/media/goals-icons/sdgs/0.png?");
+eval("module.exports = __webpack_require__.p + \"img/0.609a326c.png\";\n\n//# sourceURL=webpack:///./src/assets/media/goals-icons/sdgs/0.png?");
 
 /***/ }),
 
