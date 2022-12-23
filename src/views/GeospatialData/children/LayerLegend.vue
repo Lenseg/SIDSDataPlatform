@@ -1,5 +1,5 @@
 <template>
-  <v-card class="background-grey histogram_frame mr-4 ml-4 mr-md-0 ml-md-0">
+  <v-card class="background-grey histogram_frame pt-1 mr-4 ml-4 mr-md-0 ml-md-0">
     <div
       v-if="activeLayer"
       class="pic app-body population-per-km col-flex"
@@ -8,12 +8,15 @@
         <div  class="d-flex justify-center legend-title mr-4 ml-4 align-center">
           <span v-html="activeLayer.units"></span>
         </div>
-        <div
-          class="d-flex justify-space-evenly legend main-legend pb-1 pb-md-0"
-        >
-          <div class="legend-item" :key="index" v-for="(item,index) in legendPoints">
-            <div class="legend-item_text">{{item.text}}</div>
-            <div class="legend-item_point" :style="'background-color:'+item.color"></div>
+        <div v-if="legendPoints" class="legend main-legend pb-1 pb-md-0">
+          <div
+            class="d-flex justify-space-between mr-2 mr-md-1 ml-2 ml-md-1 ml-md-14"
+          >
+            <div class="legend-item" :key="index" v-for="(item,index) in legendPoints">
+              <div class="legend-item_text">{{item.text}}</div>
+            </div>
+          </div>
+          <div class="legend-categories mr-3 mr-md-2 ml-3 ml-md-2 ml-md-15" :style="gradient">
           </div>
         </div>
         <canvas
@@ -35,9 +38,9 @@
 
 <script>
 import format from "@/mixins/format.mixin";
-import { Chart, BarController, BarElement, PointElement,CategoryScale, LinearScale, LogarithmicScale, Title } from "chart.js";
+import { Chart, BarController, BarElement, PointElement,CategoryScale, LinearScale, Tooltip, LogarithmicScale, Title } from "chart.js";
 
-Chart.register(BarController, BarElement, PointElement,CategoryScale, LinearScale, LogarithmicScale, Title);
+Chart.register(BarController, BarElement, PointElement,CategoryScale, LinearScale, Tooltip, LogarithmicScale, Title);
 import chroma from "chroma-js";
 
 export default {
@@ -124,6 +127,16 @@ export default {
     'map',
     'hexIndex'
   ],
+  computed:{
+    gradient() {
+      let gradient = "background: linear-gradient(90deg"
+      this.legendPoints.map((point, index) => {
+        gradient+= `,${point.color} ${index*25}%`
+      });
+      gradient = gradient+');'
+      return gradient
+    }
+  },
   methods: {
     updateLegend(e) {
       if(e.noData && e.activeLayer === this.activeLayer) {
@@ -275,6 +288,9 @@ export default {
   background-size: 101% 101%;
   margin-top: 2px;
   z-index: 4;
+}
+.legend-categories {
+  height: 7px;
 }
 @media (max-width:959px) {
   /* .background-grey {
