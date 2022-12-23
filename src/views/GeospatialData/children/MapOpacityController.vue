@@ -60,7 +60,7 @@ export default {
   data() {
     return {
       open:false,
-      opacity:20
+      opacity:80
     }
   },
   props:[

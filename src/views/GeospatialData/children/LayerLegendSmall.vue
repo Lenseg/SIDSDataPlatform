@@ -6,14 +6,18 @@
     >
       <div v-if="hasData" class="d-flex d-md-block">
         <div  class="d-flex justify-center legend-title mr-4 ml-4 align-center">
-          <span v-html="activeLayer.Units"></span>
+          <span v-html="activeLayer.units"></span>
         </div>
-        <div
-          class="d-flex justify-space-evenly legend main-legend pb-1 pb-md-0"
-        >
-          <div class="legend-item" :key="index" v-for="(item,index) in legendPoints">
-            <div class="legend-item_text">{{item.text}}</div>
-            <div class="legend-item_point" :style="'background-color:'+item.color"></div>
+
+        <div v-if="legendPoints" class="legend main-legend pb-1 pb-md-0">
+          <div
+            class="d-flex justify-space-between mr-1 ml-1"
+          >
+            <div class="legend-item" :key="index" v-for="(item,index) in legendPoints">
+              <div class="legend-item_text">{{item.text}}</div>
+            </div>
+          </div>
+          <div class="legend-categories mr-1 ml-1" :style="gradient">
           </div>
         </div>
       </div>
@@ -112,6 +116,16 @@ export default {
     'activeLayer',
     'map',
   ],
+  computed:{
+    gradient() {
+      let gradient = "background: linear-gradient(90deg"
+      this.legendPoints.map((point, index) => {
+        gradient+= `,${point.color} ${index*25}%`
+      });
+      gradient = gradient+');'
+      return gradient
+    }
+  },
   methods: {
     updateLegend(e) {
       if(e.noData && e.activeLayer === this.activeLayer) {
@@ -167,6 +181,9 @@ export default {
   background-size: 101% 101%;
   margin-top: 2px;
   z-index: 4;
+}
+.legend-categories {
+  height: 7px;
 }
 @media (max-width:959px) {
   /* .background-grey {
