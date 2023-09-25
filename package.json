@@ -7,7 +7,7 @@
     "start-server": "vue-cli-service serve --mode production",
     "test": "percy exec -- cypress run",
     "serve": "vue-cli-service serve",
-    "build-staging": "vue-cli-service build --mode staging",
+    "build-staging": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build --mode staging",
     "build": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build --mode production",
     "lint": "vue-cli-service lint"
   },
